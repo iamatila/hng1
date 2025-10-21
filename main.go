@@ -211,7 +211,11 @@ func getSpecificString(c *fiber.Ctx) error {
 	mu.RUnlock()
 
 	if !exists {
-		return fiber.NewError(fiber.StatusNotFound, "String does not exist in the system")
+		// return fiber.NewError(fiber.StatusNotFound, "String does not exist in the system")
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			// "status": 404,
+			"error": "String does not exist in the system",
+		})
 	}
 
 	return c.JSON(data)
