@@ -213,8 +213,8 @@ func getSpecificString(c *fiber.Ctx) error {
 	if !exists {
 		// return fiber.NewError(fiber.StatusNotFound, "String does not exist in the system")
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
-			// "status": 404,
-			"error": "String does not exist in the system",
+			"status": 404,
+			"error":  "String does not exist in the system",
 		})
 	}
 
